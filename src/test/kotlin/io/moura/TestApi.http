@@ -1,0 +1,47 @@
+POST http://localhost:8080/player
+Content-Type: application/json
+
+{
+    "pseudo": "pierre"
+}
+
+###
+POST http://localhost:8080/player
+Content-Type: application/json
+
+{
+  "pseudo": "paul"
+}
+
+###
+POST http://localhost:8080/player
+Content-Type: application/json
+
+{
+  "pseudo": "jack"
+}
+
+###
+GET http://localhost:8080/player
+Accept: application/json
+
+###
+
+GET http://localhost:8080/player/
+Accept: application/json
+###
+
+GET http://localhost:8080/player/pierre
+Accept: application/json
+
+###
+PUT http://localhost:8080/player
+Content-Type: application/json
+
+{
+    "pseudo": "pierre"
+}
+###
+
+DELETE http://localhost:8080/player
+Accept: application/json
