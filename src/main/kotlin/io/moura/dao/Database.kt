@@ -10,7 +10,11 @@ class Database {
         //ConnectionString("mongodb://127.0.0.1:27017")
     ).coroutine
 
-    private fun playerDatabase() = client.getDatabase("players")
+    private fun playerDatabase() = client.getDatabase(PLAYERS_DATABASE)
 
     fun playerCollection() = playerDatabase().getCollection<Player>()
+
+    companion object {
+        const val PLAYERS_DATABASE = "players"
+    }
 }

@@ -24,10 +24,10 @@ class PlayerDaoImpl(
         ).wasAcknowledged()
     }
 
-    override suspend fun updatePlayer(pseudo: String): Boolean {
+    override suspend fun updatePlayer(pseudo: String, scoreInc: Int): Boolean {
         val findOneAndUpdate = playerCollection.findOneAndUpdate(
             filter = "{pseudo:\"$pseudo\"}",
-            update = "{\$inc:{score:1}}"
+            update = "{\$inc:{score:${scoreInc}}}"
         )
         return findOneAndUpdate != null
     }

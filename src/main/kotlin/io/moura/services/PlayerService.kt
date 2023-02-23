@@ -39,7 +39,8 @@ class PlayerService (
 
     suspend fun addOnePointToPlayer(request: Request): Pair<String, HttpStatusCode> {
         playerDao.updatePlayer(
-            pseudo = request.pseudo
+            pseudo = request.pseudo,
+            scoreInc = 1
         )
 
         return "Player correctly updated" to HttpStatusCode.Accepted
@@ -49,5 +50,10 @@ class PlayerService (
         playerDao.deletePlayers()
 
         return "players removed correctly" to HttpStatusCode.Accepted
+    }
+
+    suspend fun initBDD() : Unit {
+        playerDao.deletePlayers()
+        playerDao.insertPlayer("")
     }
 }

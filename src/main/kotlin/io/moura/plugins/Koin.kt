@@ -17,6 +17,7 @@ fun Application.configureKoin() {
 }
 
 val playerModule = module {
+
     single { Database() }
     single<PlayerDao> { PlayerDaoImpl(get()) }
     single { PlayerService(get()) }
