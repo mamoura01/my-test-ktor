@@ -11,9 +11,6 @@ import io.moura.plugins.configureKoin
 fun main() {
     embeddedServer(Netty, port = 8080, host = "0.0.0.0", module = Application::module)
         .start(wait = true)
-    TODO("un peu de logs")
-    TODO("un peu de TU")
-    TODO("un peu de integ/scenar http")
     TODO("l'appli d'admin angular")
 }
 
