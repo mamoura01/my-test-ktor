@@ -1,5 +1,7 @@
 #!/bin/sh
 
+chmod +x ./gradlew
+
 echo "\n"
 echo "*********************************************************"
 echo "******  on construit le projet et ses binaires **********"
