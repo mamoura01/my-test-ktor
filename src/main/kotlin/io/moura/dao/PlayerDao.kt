@@ -8,5 +8,5 @@ interface PlayerDao {
     suspend fun findPlayer(pseudo: String): Player?
     suspend fun insertPlayer(pseudo: String): Boolean
     suspend fun updatePlayer(pseudo: String, scoreInc: Int): Boolean
-    suspend fun deletePlayers(): Unit
+    suspend fun deletePlayer(pseudo: String): Boolean
 }

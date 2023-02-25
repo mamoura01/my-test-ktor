@@ -32,7 +32,9 @@ class PlayerDaoImpl(
         return findOneAndUpdate != null
     }
 
-    override suspend fun deletePlayers() {
-        playerCollection.drop()
+    override suspend fun deletePlayer(pseudo: String): Boolean {
+        return playerCollection.deleteOne(
+            Player::pseudo eq pseudo
+        ).wasAcknowledged()
     }
 }

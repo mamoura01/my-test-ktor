@@ -2,29 +2,18 @@ POST http://localhost:8080/player
 Content-Type: application/json
 
 {
-    "pseudo": "pierre"
+    "pseudo": "henri"
 }
 
-###
-POST http://localhost:8080/player
-Content-Type: application/json
-
-{
-  "pseudo": "paul"
-}
-
-###
-POST http://localhost:8080/player
-Content-Type: application/json
-
-{
-  "pseudo": "jack"
-}
-
-###
+### Successful test: check response status is 200
 GET http://localhost:8080/player
 Accept: application/json
 
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
 ###
 
 GET http://localhost:8080/player/
@@ -39,7 +28,7 @@ PUT http://localhost:8080/player
 Content-Type: application/json
 
 {
-    "pseudo": "pierre"
+    "pseudo": "henri"
 }
 ###
 

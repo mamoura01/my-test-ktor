@@ -12,7 +12,7 @@ class PlayerService (
     private val playerDao: PlayerDao
 ) {
     suspend fun findPlayers(): MyResult<List<Player>> {
-        val players = playerDao.findPlayers()
+        val players = playerDao.findPlayers().sortedByDescending { it.score }
 
         return if (players.isEmpty()) Error("No player found", HttpStatusCode.OK)
         else Success(players)
@@ -47,13 +47,11 @@ class PlayerService (
     }
 
     suspend fun deleteAllPlayers(): Pair<String, HttpStatusCode> {
-        playerDao.deletePlayers()
+        val players = playerDao.findPlayers()
+        players.forEach {
+            playerDao.deletePlayer(pseudo = it.pseudo)
+        }
 
         return "players removed correctly" to HttpStatusCode.Accepted
-    }
-
-    suspend fun initBDD() : Unit {
-        playerDao.deletePlayers()
-        playerDao.insertPlayer("")
     }
 }
